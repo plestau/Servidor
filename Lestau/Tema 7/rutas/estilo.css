@@ -1,0 +1,21 @@
+#titulo_comentar{
+    color: green;
+    text-decoration: underline;
+}
+
+input{
+    font-family : Arial, Helvetica;
+    font-size : 14;
+    color : #000033;
+    font-weight : normal;
+    border-color : #999999;
+    border-width : 1;
+    background-color : #FFFFFF;
+}
+
+td{
+    text-align: center;
+}
+th{
+    background-color: green;
+}
