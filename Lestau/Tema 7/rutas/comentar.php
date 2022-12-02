@@ -1,10 +1,17 @@
 <HTML>
+	<head>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+	</head>
 <BODY bgcolor="#C0C0C0" link="black" vlink="black" alink="black">
 	<?php
 	include_once("controladorRutas.php");
+	include_once("controladorComentarios.php");
 	include_once("conexion.php");
 	$u = new controladorRutas();
 	$resul = $u->buscarRuta($_GET['comentar'])->fetch();
+	$c = new controladorComentarios();
+	$fecha = getdate();
+	$fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
 	?>
 <CENTER>
 
@@ -55,13 +62,27 @@
    	      	    <TH bgcolor='green'><FONT color='white'>Comentario</FONT></TH>   	      	
    	          </TR><FORM name='form9' method='post' action="index.php?operacion=add_comentario"><TR>
    		   <TD><input type='text' name='nombre' size='20' maxlength='50'></TD>
-   		   <TD><FONT size='-1'><B></B></FONT></TD>
+		   <td><?php echo $fecha?></td>
    		   <TD align=right><INPUT type='text' name='texto' size='75' maxlength='254'>
    		  		   <INPUT type='hidden' NAME='id' value = '214'>
-   				   <INPUT TYPE='SUBMIT' NAME='pulsa' VALUE="Añadir"></TD> 
+			</TD> 
+			<td>
+			<INPUT TYPE='SUBMIT' NAME='pulsa' VALUE="Añadir">
+			</td>
    	           </TR></FORM></TABLE><P>
-<?php
-	include_once "controladorComentarios.php";
+				  <?php
+	// si existen comentarios sobre la ruta, los mostramos
+	if($c->buscarComentarios($_GET['comentar'])->rowCount() > 0){
+		echo "<h1>Comentarios ya existentes</h1>";
+		$comentarios = $c->buscarComentarios($_GET['comentar']);
+		echo "<table id='comentarios' border = '1'>";
+		echo "<tr><th>Usuario</th><th>Fecha</th><th>Comentario</th></tr>";
+		while($fila = $comentarios->fetch(PDO::FETCH_ASSOC)){
+			echo "<tr><td>".$fila['nombre']."</td><td>".$fila['fecha']."</td><td>".$fila['texto']."</td></tr>";
+		}
+		echo "</table>";
+	}
+
 	$com = new controladorComentarios();
 	if(isset($_POST['pulsa'])){
 		if($_POST['nombre'] == null || $_POST['texto'] == null){
@@ -73,7 +94,7 @@
 			header("Location: index.php");
 		}
 	}
-?>
+	?>
 </BODY>
 </HTML>
 

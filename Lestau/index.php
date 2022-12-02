@@ -11,6 +11,8 @@
     <ul><li><a href="Tema 5/clases/producto.php">Teleport a los tutoriales apuntados</a></li>
         <li><a href="Tema 7/rutas/index.php">Teleport al ejercicio actual</a></li>
         <li><a href="Tema 6/Ejercicios/compra/carritocompras.php">Teleport al ejercicio del carrito</a></li>
+        <li><a href="phpmailer/prueba.php">xD</a></li>
+
     </ul>
 </body>
 </html>

@@ -47,7 +47,7 @@ $clave = "";
 // si se pulsa el botón cuyo name es pulsa, se añaden los datos a la base
 
 if(isset($_POST['pulsa'])){
-	if($_POST['titulo'] == null || $_POST['descripcion'] == null || $_POST['desnivel'] == null || $_POST['distancia'] == null || $_POST['dificultad'] == null || $_POST['notas'] == null){
+	if($_POST['titulo'] == null || $_POST['descripcion'] == null || $_POST['desnivel'] == null || $_POST['distancia'] == null || $_POST['dificultad'] == null || $_POST['notas'] == null || $_POST['desnivel'] != is_numeric($_POST['desnivel']) || $_POST['distancia'] != is_numeric($_POST['distancia']) || $_POST['dificultad'] != is_numeric($_POST['dificultad'])){
 		echo "No se han introducido todos los datos";
 	}else{
 	// se crea la conexión a la base de datos

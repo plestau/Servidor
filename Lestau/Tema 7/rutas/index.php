@@ -42,6 +42,7 @@
 <?php
 include_once 'conexion.php';
 include_once 'controladorRutas.php';
+include_once 'controladorComentarios.php';
 
 if(isset($_GET['operacion']) && $_GET['operacion'] == 'listado'){
     $u = new controladorRutas();
@@ -72,11 +73,15 @@ if(isset($_GET['operacion']) && $_GET['operacion'] == 'buscar'){
     echo "</table>";
 }
 
+
 if(isset($_GET['borrar'])){
+    $c = new controladorComentarios();
     $u = new controladorRutas();
     $u->borrarRuta($_GET['borrar']);
+    $c->borrarComentarios($_GET['borrar']);
     header("Location: index.php?operacion=listado");
 }
+
 ?>
 </body>
 </html>
