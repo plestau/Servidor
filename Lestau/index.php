@@ -9,7 +9,7 @@
 <body>
     <h1>Página principal de la asignatura DWES-2DAW</h1>
     <ul><li><a href="Tema 5/clases/producto.php">Teleport a los tutoriales apuntados</a></li>
-        <li><a href="Tema 7/bdusuarios/index.php">Teleport al ejercicio actual</a></li>
+        <li><a href="Tema 7/rutas/index.php">Teleport al ejercicio actual</a></li>
         <li><a href="Tema 6/Ejercicios/compra/carritocompras.php">Teleport al ejercicio del carrito</a></li>
     </ul>
 </body>
