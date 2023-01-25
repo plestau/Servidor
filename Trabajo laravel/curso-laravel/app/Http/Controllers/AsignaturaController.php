@@ -20,7 +20,7 @@ class AsignaturaController extends Controller
     public function index()
     {
         $asignaturas = $this->asignaturas->obtenerAsignaturas();
-        return view('asignaturas.ver', ['asignaturas' => $asignaturas]);
+        return view('asignaturas.ver', ['asignatura' => $asignaturas]);
     }
 
     /**
@@ -54,7 +54,7 @@ class AsignaturaController extends Controller
      */
     public function show($nombre)
     {
-        $asignatura = $this->asignaturas->obtenerAsignaturaPorNombre($nombre);
+        $asignatura = $this->asignaturas->obtenerAsignaturaPorCod($nombre);
         return view('asignaturas.ver', ['asignatura' => $asignatura]);
     }
 
@@ -64,9 +64,9 @@ class AsignaturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($nombre)
+    public function edit($codAs)
     {
-        $asignatura = $this->asignaturas->obtenerAsignaturaPorNombre($nombre);
+        $asignatura = $this->asignaturas->obtenerAsignaturaPorCod($codAs);
         return view('asignaturas.editar', ['asignatura' => $asignatura]);
     }
 

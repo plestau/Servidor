@@ -39,10 +39,11 @@
                             </td>
                             <td>
                                 <button style="margin: 5px;">
-                                    <a href="{{ route('asignaturas.editar', $asignatura->codAs) }}">Editar</a>
+                                    <a href="/asignaturas/editar/{{$asignatura->codAs}}">Editar</a>
                                 </button>
+
                                 <button style="margin: 5px;">
-                                    <a href="{{ route('asignaturas.borrar', $asignatura->codAs) }}">Borrar</a>
+                                    <a href="/asignaturas/borrar/{{$asignatura->codAs}}">Borrar</a>
                                 </button>
                             </td>
                         </tr>

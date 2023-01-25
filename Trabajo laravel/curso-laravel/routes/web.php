@@ -27,7 +27,12 @@ Route::post('/asignaturas', [AsignaturaController::class, 'store'])->middleware(
 
 Route::get('/asignaturas/editar/{codAs}', [AsignaturaController::class, 'edit'])->middleware(['auth', 'verified'])->name('asignaturas.editar');
 
+Route::post('/asignaturas/editar/{codAs}', [AsignaturaController::class, 'update'])->middleware(['auth', 'verified'])->name('asignaturas.editar');
+
 Route::get('/asignaturas/borrar/{codAs}', [AsignaturaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('asignaturas.borrar');
+
+Route::post('/asignaturas/update/{codAs}', [AsignaturaController::class, 'update'])->middleware(['auth', 'verified'])->name('asignaturas.update');
+
 
 Route::get('/horario', function () {
     return view('horario');
@@ -42,6 +47,10 @@ Route::get('/horario/crearr', function () {
 })->middleware(['auth', 'verified'])->name('horario.crearr');
 
 Route::get('/horario/ver', function () {
+    return view('horario.ver');
+})->middleware(['auth', 'verified'])->name('horario.ver');
+
+Route::post('/horario/ver', function () {
     return view('horario.ver');
 })->middleware(['auth', 'verified'])->name('horario.ver');
 

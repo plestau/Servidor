@@ -13,14 +13,15 @@ class Asignatura extends Model
 
     protected $fillable = ['codAs', 'nombreAs', 'nombreCortoAs', 'profesorAs', 'colorAs', 'id_user', 'created_at', 'updated_at'];
 
-    protected $hidden = 'CodAs';
+    protected $primaryKey = 'codAs';
+    protected $keyType = 'string';
 
     public function obtenerAsignaturas(){
         return Asignatura::all();
     }
 
-    public function obtenerAsignaturaPorNombre($nombreAs){
-        return Asignatura::find($nombreAs);
+    public function obtenerAsignaturaPorCod($codAs){
+        return Asignatura::find($codAs);
     }
 }
 ?>

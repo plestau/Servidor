@@ -56,5 +56,19 @@
 </x-app-layout>
 
 <style>
+    #crear{
+        border: 1px solid black;
+        border-radius: 30%;
+        width: 40%;
+        margin-top: 20px;
+    }
 
+    .form-group{
+        width: 50%;
+        margin: auto;
+    }
+
+    .form-control{
+        width: 100%;
+    }
 </style>
