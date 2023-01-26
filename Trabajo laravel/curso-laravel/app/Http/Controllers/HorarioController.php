@@ -3,101 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Horario;
+use App\Models\Hora;
 use App\Models\Asignatura;
-use App\Http\Controllers\AsignaturaController;
-use Illuminate\Support\Facades\DB;
 
 class HorarioController extends Controller
 {
-    protected $horarios;
+    protected $horas;
+    protected $asignaturas;
 
-    public function __construct(Horario $horarios){
-        $this->horarios = $horarios;
+    public function __construct(Hora $horas )
+    {
+        $this->horas = $horas;
+        $this->asignaturas = new Asignatura();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $horarios = $this->horarios->obtenerHorarios();
-        return view('horario.ver', ['horarios' => $horarios]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('horario.crear');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $horario = new Horario($request->all());
-        $horario->save();
-        return redirect()->action([HorarioController::class, 'index']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($diaH, $horaH)
-    {
-        $horario = $this->horarios->obtenerHorario($diaH, $horaH);
-        return view('horario.ver', ['horario' => $horario]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($diaH, $horaH)
-    {
-        $horarioController = new HorarioController(new Horario());
-        $horario = $horarioController->obtenerHorarios();
-        return view('horario.editar', ['horario' => $horario]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $diaH, $horaH)
-    {
-        $horario = Horario::find($diaH, $horaH);
-        $horario->fill($request->all());
-        $horario->save();
-        return redirect()->action([HorarioController::class, 'index']);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($diaH, $horaH, $codAs)
-    {
-        DB::table('horas')->where('diaH', $diaH)->where('horaH', $horaH)->where('codAs', $codAs)->delete();
-        return redirect()->action([HorarioController::class, 'index']);
+        $diasSemana = [
+            0 => 'Lunes',
+            1 => 'Martes',
+            2 => 'Miércoles',
+            3 => 'Jueves',
+            4 => 'Viernes'
+        ];
+        $horasDia = [
+            1 => '08:15 - 09:15',
+            2 => '09:15 - 10:15',
+            3 => '10:15 - 11:15',
+            4 => '11:45 - 12:45',
+            5 => '12:45 - 13:45',
+            6 => '13:45 - 14:45'
+        ];
+        $horas = $this->horas->obtenerHoras();
+        return view('dashboard', ['horas' => $horas, 'diasSemana' => $diasSemana, 'horasDia' => $horasDia, 'asignaturas' => $this->asignaturas]);
     }
 }
