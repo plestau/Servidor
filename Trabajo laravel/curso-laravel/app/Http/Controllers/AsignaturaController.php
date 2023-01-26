@@ -77,9 +77,9 @@ class AsignaturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nombre)
+    public function update(Request $request, $codAs)
     {
-        $asignatura = Asignatura::find($nombre);
+        $asignatura = Asignatura::find($codAs);
         $asignatura->fill($request->all());
         $asignatura->save();
         return redirect()->action([AsignaturaController::class, 'index']);

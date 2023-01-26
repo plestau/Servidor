@@ -9,22 +9,18 @@ use Illuminate\Support\Facades\DB;
 class Horario extends Model
 {
     use HasFactory;
-
-    protected $table = 'horas';
-
-    /*protected $fillable = ['diaH', 'horaH', 'codigoAs', 'created_at', 'updated_at'];
-
-    protected $primaryKey = ['diaH', 'horaH'];
-    protected $keyType = 'array';*/
-
+    protected $table = "horas";
+    protected $primaryKey = ['diaH', 'horaH', 'codAs'];
+    protected $fillable = ['diaH','horaH','codAs'];
+    public $timestamps = false;
+    public $incrementing = false;
     public function obtenerHorarios(){
-        $horario = DB::select('SELECT* from horas');
-        return view('horario.ver', ['horario' => $horario]);
+        return DB::table('horas')
+        ->leftJoin('asignaturas','horas.codigoAs',"=",'asignaturas.codAs')
+        ->orderBy('horaH', 'asc')->orderBy('diaH', 'asc')->get();
     }
-
     public function obtenerHorario($diaH, $horaH){
-        $horario = DB::select('SELECT* from horas where diaH = ? and horaH = ?', [$diaH, $horaH]);
-        return view('horario.ver', ['horario' => $horario]);
+        return Horario::find($diaH, $horaH);
     }
 }
 ?>

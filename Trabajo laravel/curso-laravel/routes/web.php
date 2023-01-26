@@ -32,24 +32,17 @@ Route::post('/asignaturas/editar/{codAs}', [AsignaturaController::class, 'update
 
 Route::get('/asignaturas/borrar/{codAs}', [AsignaturaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('asignaturas.borrar');
 
-Route::post('/asignaturas/update/{codAs}', [AsignaturaController::class, 'update'])->middleware(['auth', 'verified'])->name('asignaturas.update');
+Route::get('/horario/ver', [HorarioController::class, 'index'])->middleware(['auth', 'verified'])->name('horario.ver');
 
-Route::get('/horario/ver', [HorarioController::class, 'index'])->middleware(['auth', 'verified'])->name('horario.ver'); 
-
-Route::post('/horario/ver', [HorarioController::class, 'index'])->middleware(['auth', 'verified'])->name('horario.crear'); 
+Route::post('/horario/ver', [HorarioController::class, 'store'])->middleware(['auth', 'verified'])->name('horario.crear');
 
 Route::get('/horario/crear', [HorarioController::class, 'create'])->middleware(['auth', 'verified'])->name('horario.crear');
 
-Route::post('/horario/crear', [HorarioController::class, 'store'])->middleware(['auth', 'verified'])->name('horario.crear');
+Route::get('/horario/editar/{diaH}/{horaH}', [HorarioController::class, 'edit'])->middleware(['auth', 'verified'])->name('horario.editar');
 
-Route::get('/horario/editar/{codAs}', [HorarioController::class, 'edit'])->middleware(['auth', 'verified'])->name('horario.editar');
+Route::post('/horario/editar/{diaH}/{horaH}', [HorarioController::class, 'update'])->middleware(['auth', 'verified'])->name('horario.editar');
 
-Route::post('/horario/editar/{codAs}', [HorarioController::class, 'update'])->middleware(['auth', 'verified'])->name('horario.editar');
-
-Route::get('/horario/borrar/{codAs}', [HorarioController::class, 'destroy'])->middleware(['auth', 'verified'])->name('horario.borrar');
-
-Route::post('/horario/update/{codAs}', [HorarioController::class, 'update'])->middleware(['auth', 'verified'])->name('horario.update');
-
+Route::get('/horario/borrar/{diaH}/{horaH}', [HorarioController::class, 'destroy'])->middleware(['auth', 'verified'])->name('horario.borrar');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

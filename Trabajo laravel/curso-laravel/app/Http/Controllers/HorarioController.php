@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Horario;
+use App\Models\Asignatura;
+use App\Http\Controllers\AsignaturaController;
 use Illuminate\Support\Facades\DB;
 
 class HorarioController extends Controller
@@ -20,8 +22,7 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = DB::select('select * from horas where diaH = ? and horaH = ?', ['Lunes', '8:00']);
- 
+        $horarios = $this->horarios->obtenerHorarios();
         return view('horario.ver', ['horarios' => $horarios]);
     }
 
@@ -43,10 +44,7 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        $horario = new Horario();
-        $horario->diaH = $request->diaH;
-        $horario->horaH = $request->horaH;
-        $horario->codigoAs = $request->codigoAs;
+        $horario = new Horario($request->all());
         $horario->save();
         return redirect()->action([HorarioController::class, 'index']);
     }
@@ -71,7 +69,8 @@ class HorarioController extends Controller
      */
     public function edit($diaH, $horaH)
     {
-        $horario = Horario::find($diaH, $horaH);
+        $horarioController = new HorarioController(new Horario());
+        $horario = $horarioController->obtenerHorarios();
         return view('horario.editar', ['horario' => $horario]);
     }
 
@@ -85,9 +84,7 @@ class HorarioController extends Controller
     public function update(Request $request, $diaH, $horaH)
     {
         $horario = Horario::find($diaH, $horaH);
-        $horario->diaH = $request->diaH;
-        $horario->horaH = $request->horaH;
-        $horario->codigoAs = $request->codigoAs;
+        $horario->fill($request->all());
         $horario->save();
         return redirect()->action([HorarioController::class, 'index']);
     }
@@ -98,10 +95,9 @@ class HorarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($diaH, $horaH)
+    public function destroy($diaH, $horaH, $codAs)
     {
-        $horario = Horario::find($diaH, $horaH);
-        $horario->delete();
+        DB::table('horas')->where('diaH', $diaH)->where('horaH', $horaH)->where('codAs', $codAs)->delete();
         return redirect()->action([HorarioController::class, 'index']);
     }
 }
