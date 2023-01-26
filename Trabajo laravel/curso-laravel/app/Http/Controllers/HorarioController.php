@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Horario;
+use Illuminate\Support\Facades\DB;
 
 class HorarioController extends Controller
 {
@@ -19,7 +20,8 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = $this->horarios->obtenerHorarios();
+        $horarios = DB::select('select * from horas where diaH = ? and horaH = ?', ['Lunes', '8:00']);
+ 
         return view('horario.ver', ['horarios' => $horarios]);
     }
 
@@ -41,7 +43,10 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        $horario = new Horario($request->all());
+        $horario = new Horario();
+        $horario->diaH = $request->diaH;
+        $horario->horaH = $request->horaH;
+        $horario->codigoAs = $request->codigoAs;
         $horario->save();
         return redirect()->action([HorarioController::class, 'index']);
     }
@@ -52,9 +57,9 @@ class HorarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nombre)
+    public function show($diaH, $horaH)
     {
-        $horario = $this->horarios->obtenerHorarioPorNombre($nombre);
+        $horario = $this->horarios->obtenerHorario($diaH, $horaH);
         return view('horario.ver', ['horario' => $horario]);
     }
 
@@ -64,9 +69,9 @@ class HorarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($nombre)
+    public function edit($diaH, $horaH)
     {
-        $horario = $this->horarios->obtenerHrarioPorNombre($nombre);
+        $horario = Horario::find($diaH, $horaH);
         return view('horario.editar', ['horario' => $horario]);
     }
 
@@ -77,10 +82,12 @@ class HorarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nombre)
+    public function update(Request $request, $diaH, $horaH)
     {
-        $horario = Horario::find($nombre);
-        $horario->fill($request->all());
+        $horario = Horario::find($diaH, $horaH);
+        $horario->diaH = $request->diaH;
+        $horario->horaH = $request->horaH;
+        $horario->codigoAs = $request->codigoAs;
         $horario->save();
         return redirect()->action([HorarioController::class, 'index']);
     }
@@ -91,9 +98,9 @@ class HorarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nombre)
+    public function destroy($diaH, $horaH)
     {
-        $horario = Horario::find($nombre);
+        $horario = Horario::find($diaH, $horaH);
         $horario->delete();
         return redirect()->action([HorarioController::class, 'index']);
     }

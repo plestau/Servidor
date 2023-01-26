@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,26 +34,21 @@ Route::get('/asignaturas/borrar/{codAs}', [AsignaturaController::class, 'destroy
 
 Route::post('/asignaturas/update/{codAs}', [AsignaturaController::class, 'update'])->middleware(['auth', 'verified'])->name('asignaturas.update');
 
+Route::get('/horario/ver', [HorarioController::class, 'index'])->middleware(['auth', 'verified'])->name('horario.ver'); 
 
-Route::get('/horario', function () {
-    return view('horario');
-})->middleware(['auth', 'verified'])->name('horario');
+Route::post('/horario/ver', [HorarioController::class, 'index'])->middleware(['auth', 'verified'])->name('horario.crear'); 
 
-Route::get('/horario/crear', function () {
-    return view('horario.crear');
-})->middleware(['auth', 'verified'])->name('horario.crear');
+Route::get('/horario/crear', [HorarioController::class, 'create'])->middleware(['auth', 'verified'])->name('horario.crear');
 
-Route::get('/horario/crearr', function () {
-    return view('horario.crearr');
-})->middleware(['auth', 'verified'])->name('horario.crearr');
+Route::post('/horario/crear', [HorarioController::class, 'store'])->middleware(['auth', 'verified'])->name('horario.crear');
 
-Route::get('/horario/ver', function () {
-    return view('horario.ver');
-})->middleware(['auth', 'verified'])->name('horario.ver');
+Route::get('/horario/editar/{codAs}', [HorarioController::class, 'edit'])->middleware(['auth', 'verified'])->name('horario.editar');
 
-Route::post('/horario/ver', function () {
-    return view('horario.ver');
-})->middleware(['auth', 'verified'])->name('horario.ver');
+Route::post('/horario/editar/{codAs}', [HorarioController::class, 'update'])->middleware(['auth', 'verified'])->name('horario.editar');
+
+Route::get('/horario/borrar/{codAs}', [HorarioController::class, 'destroy'])->middleware(['auth', 'verified'])->name('horario.borrar');
+
+Route::post('/horario/update/{codAs}', [HorarioController::class, 'update'])->middleware(['auth', 'verified'])->name('horario.update');
 
 
 Route::middleware('auth')->group(function () {

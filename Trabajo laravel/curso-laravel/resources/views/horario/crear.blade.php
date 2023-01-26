@@ -14,34 +14,43 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form align="center" action="/horario/crear" method="POST">
+                    <!--Formulario con las asignaturas y sus horas-->
+                    <form action="/horario/ver" method="POST">
                         @csrf
-                        <p>Selecciona la asignatura</p>
-                        <select name="asignatura" id="asignatura">
-                            @foreach ($asignaturas as $asignatura)
-                                <option>{{ $asignatura->nombreAs }}</option>
-                            @endforeach
-                        </select>
-                        <p>Selecciona el día</p>
-                        <select name="dia" id="dia">
-                            <option value="Lunes">Lunes</option>
-                            <option value="Martes">Martes</option>
-                            <option value="Miércoles">Miércoles</option>
-                            <option value="Jueves">Jueves</option>
-                            <option value="Viernes">Viernes</option>
-                        </select>
-                        <div id="horas">
-                            <p>Primera hora (8:15/9:15) <input type="checkbox" name="primera"></p>
-                            <p>Segunda hora (9:15/10:15)<input type="checkbox" name="segunda"></p>
-                            <p>Tercera hora (10:15/11:15)<input type="checkbox" name="tercera"></p>
-                            <p>Cuarta hora (11:45/12:45)<input type="checkbox" name="cuarta"></p>
-                            <p>Quinta hora (12:45/13:45)<input type="checkbox" name="quinta"></p>
-                            <p>Sexta hora (13:45/14:45)<input type="checkbox" name="sexta"></p>
-                        </div><br>
-                        <button style="border: 1px solid black; margin: 5px;">
-                            <a href="/horario/crear">Crear horario</a>
-                        </button>
-                    </form>
+                        <div id="horas" align="center">
+                            <div>
+                                <label for="diaH">Dia</label>
+                                <select name="diaH" id="diaH">
+                                    <option value="Lunes">Lunes</option>
+                                    <option value="Martes">Martes</option>
+                                    <option value="Miercoles">Miercoles</option>
+                                    <option value="Jueves">Jueves</option>
+                                    <option value="Viernes">Viernes</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="horaH">Hora</label>
+                                <select name="horaH" id="horaH">
+                                    <option value="8:00">8:15</option>
+                                    <option value="9:00">9:15</option>
+                                    <option value="10:00">10:15</option>
+                                    <option value="11:00">11:45</option>
+                                    <option value="12:00">12:45</option>
+                                    <option value="13:00">13:45</option>
+                                    <option value="14:00">14:45</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="nombreCortoAs">Asignatura</label>
+                                <select name="nombreCortoAs" id="nombreCortoAs">
+                                    @foreach ($asignaturas as $asignatura)
+                                        <option value="{{$asignatura->nombreCortoAs}}">{{$asignatura->nombreCortoAs}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <button id="crear" type="submit">Crear</button>
+                    
                 </div>
             </div>
         </div>
@@ -49,10 +58,22 @@
 </x-app-layout>
 
 <style>
-    #horas {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        flex-wrap: wrap;
+    #crear{
+        border: 1px solid black;
+        border-radius: 30%;
+        width: 10%;
+        margin-top: 20px;
+    }
+
+    #diaH, #horaH, #nombreCortoAs {
+        margin: 10px;
+    }
+
+    #horas > div > label {
+        margin: 10px;
+    }
+
+    #horas > div > select {
+        margin: 10px;
     }
 </style>

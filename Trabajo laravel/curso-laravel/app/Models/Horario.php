@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Horario extends Model
 {
@@ -11,16 +12,19 @@ class Horario extends Model
 
     protected $table = 'horas';
 
-    protected $fillable = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+    /*protected $fillable = ['diaH', 'horaH', 'codigoAs', 'created_at', 'updated_at'];
 
-    protected $hidden = 'CodAs';
+    protected $primaryKey = ['diaH', 'horaH'];
+    protected $keyType = 'array';*/
 
     public function obtenerHorarios(){
-        return Horario::all();
+        $horario = DB::select('SELECT* from horas');
+        return view('horario.ver', ['horario' => $horario]);
     }
 
-    public function obtenerHorarioPorNombre($nombreAs){
-        return Horario::find($nombreAs);
+    public function obtenerHorario($diaH, $horaH){
+        $horario = DB::select('SELECT* from horas where diaH = ? and horaH = ?', [$diaH, $horaH]);
+        return view('horario.ver', ['horario' => $horario]);
     }
 }
 ?>

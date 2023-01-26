@@ -7,6 +7,7 @@
     </x-slot>
 
     @php
+    $horario = DB::table('horas')->get();
     $asignaturas = DB::table('asignaturas')->get();
     @endphp
 
@@ -19,42 +20,42 @@
                         <table align="center" style="background-color:white; border: 1px #000000 solid; height:500px; width:600px; text-align:center">
                             <thead>
                                 <tr>
-                                    <th style="border: 1px #000000 solid">Horas</th>
-                                    <th style="border: 1px #000000 solid">Lunes</th>
-                                    <th style="border: 1px #000000 solid">Martes</th>
-                                    <th style="border: 1px #000000 solid">Miércoles</th>
-                                    <th style="border: 1px #000000 solid">Jueves</th>
-                                    <th style="border: 1px #000000 solid">Viernes</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Horas</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Lunes</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Martes</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Miércoles</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Jueves</th>
+                                    <th name="diaH" style="border: 1px #000000 solid">Viernes</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style="border: 1px #000000 solid">8:15 - 9:15</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
@@ -63,31 +64,31 @@
                                 </tr>
                                 <tr>
                                     <td style="border: 1px #000000 solid">9:15 - 10:15</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>        
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>                                            
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
@@ -96,31 +97,31 @@
                                 </tr>
                                 <tr>
                                     <td style="border: 1px #000000 solid">10:15 - 11:15</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
@@ -132,32 +133,32 @@
                                     <td style="border: 1px #000000 solid;text-align:center; font-size:20px" colspan="6">Recreo</td>
                                 </tr>
                                 <tr>
-                                    <td style="border: 1px #000000 solid">11:45 - 12:45</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid">11:45 - 12:45</td>
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
@@ -166,31 +167,31 @@
                                 </tr>
                                 <tr>
                                     <td style="border: 1px #000000 solid">12:45 - 13:45</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
@@ -199,31 +200,31 @@
                                 </tr>
                                 <tr>
                                     <td style="border: 1px #000000 solid">13:45 - 14:45</td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
                                             @endforeach
                                         </select></td>
-                                    <td style="border: 1px #000000 solid"><select style="border:none" name="asignatura" id="asignatura">
+                                    <td name="horaH" style="border: 1px #000000 solid"><select style="border:none" name="codigoAs" id="asignatura">
                                             <option selected="selected" value="0">Seleccione</option>
                                             @foreach ($asignaturas as $asignatura)
                                             <option value="{{ $asignatura->codAs }}">{{ $asignatura->nombreCortoAs }}</option>
