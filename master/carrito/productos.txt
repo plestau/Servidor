@@ -1,4 +1,0 @@
-FR001;Manzana golden;1.25;manzana.jpg
-FR002;Pera conferencia;2.03;pera.jpg
-FR003;Plátano de canarias;1.57;platano.jpg
-FR004;Sandía sin pepitas;2.59;sandia.jpg

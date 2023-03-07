@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvendio{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+<h3>Estos son tus datos introducidos</h3>
+{% for k, v in datos %}
+    {% if k !="aficiones" %}
+        <p>{{k}}: {{v}}</p>
+    {%else%}
+        <h1>{{k}}:</h1>
+        {% for a in v %}
+            <p>{{a}}</p>
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+</div>
+<style>
+body {
+    padding-top: 40px;
+background-color: #f0f0f0;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+color: #000;
+}
+
+h1 {
+font-size: 24px;
+color: #000;
+}
+
+p {
+margin: 0 0 20px 0;
+}
+
+a {
+color: #000;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+#wrapper {
+width: 600px;
+margin: 0 auto;
+background-color: #fff;
+padding: 20px;
+}
+</style>
+{% endblock %}
